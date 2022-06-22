@@ -149,10 +149,74 @@ public class Game {
      * @return String indicating the outcome of the game: "X wins" or "O wins" or "Tie" or "None"
      */
     public String checkGameWinner(char [][]grid){
-        String result = "None";
+
         //Student code goes here ...
-        return result;
+        //Player 'x'
+        if(whoWin('x')){
+            return "x win!";
+        }
+        //Player 'o'
+        else if(whoWin('o')){
+            return "o win!";
+        }
+        else if(isFinish()){
+            return "Tie";
+        }
+        else{
+            return "None";
+        }
+
     }
+
+    private boolean isFinish() {
+        boolean finish = true;
+
+        for (int i = 0; i <= 2; i++){
+            for (int j = 0; j <= 2; j++){
+                if (grid[i][j] == '-') {
+                    finish = false;
+                }
+            }
+        }
+
+        return finish;
+    }
+
+    public boolean whoWin(char player){
+
+        //column win
+        if(grid[0][0] == player && grid[0][1] == player && grid[0][2] == player){
+            return true;
+        }
+        if(grid[1][0] == player && grid[1][1] == player && grid[1][2] == player){
+            return true;
+        }
+        if(grid[2][0] == player && grid[2][1] == player && grid[2][2] == player){
+            return true;
+        }
+
+        //row win
+        if(grid[0][0] == player && grid[1][0] == player && grid[2][0] == player){
+            return true;
+        }
+        if(grid[0][1] == player && grid[1][1] == player && grid[2][1] == player){
+            return true;
+        }
+        if(grid[0][2] == player && grid[1][2] == player && grid[2][2] == player){
+            return true;
+        }
+
+        //diagonal win
+        if(grid[0][0] == player && grid[1][1] == player && grid[2][2] == player){
+            return true;
+        }
+        if(grid[0][2] == player && grid[1][1] == player && grid[2][0] == player){
+            return true;
+        }
+        return false;
+
+    }
+
 
     /**
      * Main function
