@@ -150,16 +150,16 @@ public class Game {
      */
     public String checkGameWinner(char [][]grid){
 
-        //Student code goes here ...
+
         //Player 'x'
-        if(whoWin('x')){
-            return "x win!";
+        if(whoWin('x', grid)){
+            return "x wins";
         }
         //Player 'o'
-        else if(whoWin('o')){
-            return "o win!";
+        else if(whoWin('o', grid)){
+            return "o wins";
         }
-        else if(isFinish()){
+        else if(isFinish(grid)){
             return "Tie";
         }
         else{
@@ -168,7 +168,7 @@ public class Game {
 
     }
 
-    private boolean isFinish() {
+    private boolean isFinish(char[][] grid) {
         boolean finish = true;
 
         for (int i = 0; i <= 2; i++){
@@ -182,7 +182,7 @@ public class Game {
         return finish;
     }
 
-    public boolean whoWin(char player){
+    public boolean whoWin(char player, char[][] grid){
 
         //column win
         if(grid[0][0] == player && grid[0][1] == player && grid[0][2] == player){
